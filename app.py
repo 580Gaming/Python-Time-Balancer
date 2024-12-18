@@ -21,12 +21,17 @@ def WorkTimwSubmit():
 window = Tk()
 
 window.title("Time Balancer (DEBUG.Linux/Win/Mac)")
-window.geometry('550x650')
+window.geometry('450x650')
 window.config(background='black')
 
-WorkTimeEntry = Entry(window, font = ("",20,""))
-WorkTimeEntry.pack(side = LEFT)
+WorkTimeLabel = Label(window, text='Please enter work time in minutes.',fg='white' , font=('',15,),bg='black')
+WorkTimeLabel.pack()
 
+WorkTimeEntry = Entry(window, font = ("",20,""))
+WorkTimeEntry.pack()
+
+WorkTimeSubmitButton = Button(window, text='Submit work time', fg='black', bg='white', font=('',10,))
+WorkTimeSubmitButton.pack(pady=10)
 
 
 window.mainloop()
