@@ -14,9 +14,19 @@ def StartButton():
         else:
             time.sleep(BreakTime)
 
+def WorkTimwSubmit():
+    WorkTime = int(WorkTimeEntry.get()*60)
+    print(WorkTime)
 
 window = Tk()
 
-entry = Entry(window, font = ("",20,""))
-entry.pack(side = LEFT)
+window.title("Time Balancer (DEBUG.Linux/Win/Mac)")
+window.geometry('550x650')
+window.config(background='black')
+
+WorkTimeEntry = Entry(window, font = ("",20,""))
+WorkTimeEntry.pack(side = LEFT)
+
+
+
 window.mainloop()
