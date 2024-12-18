@@ -6,18 +6,23 @@ BreakTime = int(0)
 RunCycles = int(0)
 IsWork = bool(True)
 
-def StartButton():
-    while RunCycles > 0:
+def StartProgram():
+    global RunCycles
+    while RunCycles >= 0:
         if IsWork == True:
             time.sleep(WorkTime)
             RunCycles -= 1
+            print("Work Over, congrats")
         else:
             time.sleep(BreakTime)
+            print('Break Over, damn')
 
-def WorkTimwSubmit():
-    WorkTime = int(WorkTimeEntry.get()*60)
+def WorkTimeSubmit():
+    WorkTime = int(WorkTimeEntry.get()) * 60
     print(WorkTime)
 
+def BreakTimeSubmit():
+    BreakTime = int(BreakTimeEntry.get())
 window = Tk()
 
 window.title("Time Balancer (DEBUG.Linux/Win/Mac)")
@@ -30,8 +35,12 @@ WorkTimeLabel.pack()
 WorkTimeEntry = Entry(window, font = ("",20,""))
 WorkTimeEntry.pack()
 
-WorkTimeSubmitButton = Button(window, text='Submit work time', fg='black', bg='white', font=('',10,))
+WorkTimeSubmitButton = Button(window, text='Submit work time', fg='black', bg='white', font=('',10,), command=WorkTimeSubmit)
 WorkTimeSubmitButton.pack(pady=10)
 
+BreakTimeEntry = Entry(window, font=("",20,""))
+BreakTimeEntry.pack()
 
+StartButton = Button(window, text='Start', font=('',10,), bg='white', fg='black', command=StartProgram)
+StartButton.pack()
 window.mainloop()
