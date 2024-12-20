@@ -25,6 +25,7 @@ def BreakTimeSubmit():
     BreakTime = int(BreakTimeEntry.get())
 window = Tk()
 
+#test
 window.title("Time Balancer (DEBUG.Linux/Win/Mac)")
 window.geometry('450x650')
 window.config(background='black')
