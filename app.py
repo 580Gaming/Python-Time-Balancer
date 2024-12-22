@@ -1,21 +1,30 @@
+from glob import glob1
 import time
 from tkinter import *
 
 WorkTime = int(0)
 BreakTime = int(0)
-RunCycles = int(0)
+RunCycles = int(1)
 IsWork = bool(True)
 
 def StartProgram():
+    if WorkTime == 8 or BreakTime == 90 or RunCycles == 90:
+        print("invalid times or cycles")
+    else:
+        WorkBreakSorter()
+
+
+def WorkBreakSorter():
     global RunCycles
-    while RunCycles >= 0:
+    while RunCycles > 0:
         if IsWork == True:
             time.sleep(WorkTime)
-            RunCycles -= 1
-            print("Work Over, congrats")
+            RunCycles = RunCycles - 1
+            print("Test")
         else:
-            time.sleep(BreakTime)
-            print('Break Over, damn')
+            print("Break")
+    print("retest")
+
 
 def WorkTimeSubmit():
     WorkTime = int(WorkTimeEntry.get()) * 60
@@ -23,6 +32,9 @@ def WorkTimeSubmit():
 
 def BreakTimeSubmit():
     BreakTime = int(BreakTimeEntry.get())
+    print(BreakTime)
+
+
 window = Tk()
 
 #Testing if this works.
