@@ -3,27 +3,27 @@ from plyer import notification
 
 
 WaitTime = int(0)
-TimeOne = int(input("Enter worktime: "))
-TimeTwo = int(input('Enter breaktime: '))
-Runs = float(input('Enter cycles: '))
+WorkTime = int(input("Enter worktime: "))
+BreakTime = int(input('Enter breaktime: '))
+Cycles = float(input('Enter cycles: '))
 BreakFirstChecker = str(input('Would you like your break first? Y/n: '))
 EndMessage = str(input('End Message: '))
-StageOne = bool(True)
+IsWork = bool(True)
 BreakFirst = bool(False)
 
 if BreakFirstChecker == 'y' or BreakFirstChecker == 'Y':
-    StageOne = False
-    Runs += .5
+    IsWork = False
+    Cycles += .5
     print('break first')
 
 def Setter():
-    if StageOne == True:
+    if IsWork == True:
         NotifyUserWork()
-        time.sleep(TimeOne * 60)
+        time.sleep(WorkTime * 60)
 
     else:
         NotifyUser()
-        time.sleep(TimeTwo * 60)
+        time.sleep(BreakTime * 60)
 
 def NotifyUserWork():
     notification.notify(title='TimeKeeper',message='Time to start work, sorry.', timeout=5)
@@ -41,13 +41,13 @@ def NotifyUser():
 def NotifyUserEnd():
     notification.notify(title='TimeKeeper',message="Goodbye break, hello work. :(", timeout=5)
 
-while Runs > 0:
+while Cycles > 0:
     Setter()
-    StageOne = not StageOne
-    Runs -= .5
+    IsWork = not IsWork
+    Cycles -= .5
 
 
-if Runs == 0:
+if Cycles == 0:
     NotifyUserWorkEnd()
 
     if EndMessage:

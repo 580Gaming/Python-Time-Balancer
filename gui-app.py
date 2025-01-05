@@ -11,6 +11,10 @@ IsWork = bool(True)
 def StartProgram():
     if WorkTime == 0 or BreakTime == 0 or RunCycles == 0:
         print("invalid times or cycles")
+    else:
+        WorkTimeSubmit()
+        BreakTimeSubmit()
+        #CyclesSubmit()
 
 def Waiter():
     if IsWork == True:
@@ -48,13 +52,16 @@ WorkTimeEntry = Entry(window, font = ("",20,""))
 WorkTimeEntry.pack()
 
 WorkTimeSubmitButton = Button(window, text='Submit work time', fg='black', bg='white', font=('',10,), command=WorkTimeSubmit)
-WorkTimeSubmitButton.pack(pady=10)
+#WorkTimeSubmitButton.pack(pady=10)
+
+BreakTimeLabel = Label(window, text='Break Time', fg='white', bg='black', font=('',15,))
+BreakTimeLabel.pack()
 
 BreakTimeEntry = Entry(window, font=("",20,""))
 BreakTimeEntry.pack()
 
 BreakTimeSubmitButton = Button(window, text='Submit break time', fg='black', bg='white', font=('',10,), command=BreakTimeSubmit)
-BreakTimeSubmitButton.pack(pady=10)
+#BreakTimeSubmitButton.pack(pady=10)
 
 StartButton = Button(window, text='Start', font=('',10,), bg='white', fg='black', command=StartProgram)
 StartButton.pack()
